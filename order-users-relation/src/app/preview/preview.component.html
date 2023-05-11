@@ -1,0 +1,39 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Quick Preview of Subscribing Object Array through BehaviorSubject
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Quick Preview of Subscribing Object Array through BehaviorSubject</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div id="container">
+      <ion-label>This is the value of User[]</ion-label>
+      <ng-container *ngFor="let user of users">
+        <div>{{user.name}}</div>
+      </ng-container>
+
+      <br/>
+
+      <ion-label>This is the value that only subscribes to User's name using SwitchMap</ion-label>
+      <ng-container *ngFor="let name of userNameList">
+        <div>{{name}}</div>
+      </ng-container>
+      <p></p>
+    <div id="box">
+    <ion-label>Here you can modify User by Subscribing</ion-label>
+    <ng-container *ngFor="let user of users">
+      <ion-item>
+        <ion-input size="md" fill="outline" [(ngModel)]="user.name"></ion-input>
+      </ion-item>
+      <br/>
+    </ng-container>
+  </div>
+  </div>
+</ion-content>
