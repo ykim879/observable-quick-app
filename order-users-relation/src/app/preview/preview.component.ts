@@ -18,6 +18,7 @@ export class PreviewComponent  implements OnInit {
     this.dataService.users.subscribe((users) => {
       this.users = users;
     });
+    //The name value hasn't received next(), so when it received next it will be changed
     this.dataService.users.pipe(
       map((users: User[]) => users.map(user => of(user.name))),
       switchMap((names: Observable<string>[]) => forkJoin(names))
@@ -26,4 +27,8 @@ export class PreviewComponent  implements OnInit {
     });
   }
 
+  //refresh user will help observable of user.name to get changed data by refreshing the user by sending next.
+  refreshUser() {
+    this.dataService.refreshUser();
+  }
 }

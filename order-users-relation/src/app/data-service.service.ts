@@ -32,7 +32,9 @@ export class DataService {
   }
 
   refreshUser() {
-    this.usersSubject.next(this.usersSubject.getValue());
+    const users = this.usersSubject.getValue();
+    this.usersSubject.next(users);
+    console.log("refresh clicked");
   }
 }
 
