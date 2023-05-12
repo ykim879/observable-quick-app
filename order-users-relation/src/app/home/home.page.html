@@ -27,32 +27,13 @@
       </ion-row>
       <ng-container *ngFor="let user of users">
         <ion-row>
-          <ion-col><ion-input [(ngModel)]="user.name"/></ion-col>
-          <ion-col><ion-button (click) = "onUserEdit()">Edit</ion-button></ion-col>
-          <ion-col><ion-button color="warning">Delete</ion-button></ion-col>
+          <ion-col><ion-input [(ngModel)] = "user.editName"/></ion-col>
+          <ion-col><ion-button (click) = "onUserEdit(user)">Edit</ion-button></ion-col>
+          <ion-col><ion-button color="warning" (click) = "onUserDelete(user)">Delete</ion-button></ion-col>
         </ion-row>
       </ng-container>
     </ion-grid>
     <ion-grid>
-      <ion-row>
-        <ion-col>
-          <ion-accordion-group>
-            <ion-accordion value="first">
-              <ion-item slot="header" color="light">
-                <ion-label>{{newOrderUserName || "User Name"}}</ion-label>
-              </ion-item>
-              <ng-container *ngFor="let name of userNameList">
-                <div class="ion-padding" slot="content" (click) = "onNameClicked(name)">{{name}}</div>
-              </ng-container>
-            </ion-accordion>
-          </ion-accordion-group>
-        </ion-col>
-        <ion-col></ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col><ion-input></ion-input></ion-col>
-        <ion-col><ion-button (click) = "onOrderCreate()">Create</ion-button></ion-col>
-      </ion-row>
       <ng-container *ngFor="let order of orders">
         <ion-row>
           <ion-col> Order </ion-col>
