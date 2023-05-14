@@ -1,18 +1,22 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
 import { forkJoin, map, Observable, of, switchMap } from 'rxjs';
 import { DataService, User } from '../data-service.service';
+import { HomePage } from '../home/home.page';
 
 @Component({
   selector: 'app-preview',
   templateUrl: './preview.component.html',
   styleUrls: ['../app.component.scss'],
 })
+
 export class PreviewComponent  implements OnInit {
 
   users : User[] = [];
   userNameList: string[] = [];
 
-  constructor(private dataService : DataService) { }
+
+  constructor(private dataService : DataService, public navCtrl: NavController) { }
 
   ngOnInit() {
     this.dataService.users.subscribe((users) => {
@@ -30,5 +34,9 @@ export class PreviewComponent  implements OnInit {
   //refresh user will help observable of user.name to get changed data by refreshing the user by sending next.
   refreshUser() {
     this.dataService.refreshUser();
+  }
+
+  goAnOtherPage() {
+    this.navCtrl.navigateForward('home');
   }
 }
